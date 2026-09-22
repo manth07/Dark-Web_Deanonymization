@@ -1,19 +1,33 @@
 # Environment & Credentials
 .env
 *.env
-backend/.env
 **/.env
+!.env.example
 
 # Python Virtual Environments & Caches
+.venv/
 venv/
+ENV/
+env/
 backend/venv/
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
+
+# Testing & Coverage
 .pytest_cache/
 .coverage
 htmlcov/
+.mypy_cache/
+
+# Databases, Volume Mounts & Local AI Models
+neo4j_data/
+ollama_models/
+logs/*.log
+!logs/.gitkeep
+data/rejected/
+data/pending_writes.jsonl
 
 # Output Reports & Data
 output/
@@ -30,5 +44,6 @@ build/
 
 # IDE & System Files
 .DS_Store
+Thumbs.db
 .vscode/
 .idea/

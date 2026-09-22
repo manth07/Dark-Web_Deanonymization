@@ -2,12 +2,14 @@
 
 Production-ready, highly modular **FastAPI** backend architecture tailored for **ThirdEye**, an AI-driven forensic dark web intelligence and threat analysis platform built for security analysts, forensic investigators, and law enforcement.
 
+**Technology Stack:** FastAPI, SQLModel, Alembic, PostgreSQL, Neo4j Python Driver, Pydantic v2
+
 ---
 
 ## 📁 Architecture & Project Structure
 
 ```
-thirdeye-backend/
+backend/
 ├── app/
 │   ├── __init__.py             # Core package initialization (v2.0-SIH)
 │   ├── main.py                 # FastAPI application setup, CORS, lifespan events & routing
@@ -37,14 +39,22 @@ thirdeye-backend/
 
 ---
 
-## ⚡ Core Features
+## ⚡ Core Features & Responsibilities
 
-- **Pydantic v2 & Pydantic Settings**: Strongly-typed settings class parsing string arrays and JSON lists from `.env`.
-- **System Diagnostics & Health API**: Endpoint `/api/v1/health` providing platform operational status, version `2.0-SIH`, precise server UTC timestamp, system RAM usage, and process RSS/VMS memory statistics.
+- **FastAPI REST API**:
+  - `GET /api/v1/health`: Health status, version `2.0-SIH`, UTC timestamp & memory metrics.
+  - `GET /api/v1/actors`: Paginated, timeline-filtered, and confidence-filtered list of threat actors.
+  - `GET /api/v1/actors/{actor_id}`: Full actor profile with alias handles, crypto wallets, and attribution scores.
+  - `GET /api/v1/actors/{actor_id}/graph`: Node-and-link JSON schema for React Flow canvas visualization.
+  - `GET /api/v1/export`: Asynchronous generation of NTRO-compliant JSON, CSV, and summary reports.
+- **Relational Metadata Store**:
+  - SQLModel & PostgreSQL for analyst session logs, audit trails, source configurations, and query caching.
+  - Alembic for deterministic database schema migrations.
+- **Neo4j Read Gateway**:
+  - Executes parameterized Cypher read queries against the identity graph maintained by `ai-graph`.
 - **Security & Headers**: Built-in HTTP security header enforcement middleware (`X-Content-Type-Options`, `X-Frame-Options`, `CSP`, `HSTS`) and token authentication stubs.
 - **Modern Next.js CORS Integration**: Fully configured CORS middleware supporting development (`localhost:3000`, `127.0.0.1:3000`) and configurable production origins.
 - **Lifespan Context Management**: Clean startup and shutdown event handling using FastAPI `asynccontextmanager`.
-- **Forensic Data Models & Services**: SQLModel schemas and business services for target tracking, intelligence dossiers, and graph link analysis.
 
 ---
 
@@ -93,30 +103,10 @@ The server will start at: `http://localhost:8000`
 | `/docs` | `GET` | Interactive Swagger UI documentation |
 | `/redoc` | `GET` | ReDoc API documentation |
 | `/api/v1/health` | `GET` | Health status, version `2.0-SIH`, UTC timestamp & memory metrics |
-
-### Sample `/api/v1/health` Response
-```json
-{
-  "status": "operational",
-  "version": "2.0-SIH",
-  "timestamp": "2026-09-21T22:15:00.000Z",
-  "uptime_seconds": 12.45,
-  "environment": "development",
-  "memory": {
-    "total_mb": 16384.0,
-    "available_mb": 10240.5,
-    "used_mb": 6143.5,
-    "percent_used": 37.5,
-    "process_rss_mb": 45.2,
-    "process_vms_mb": 210.8
-  },
-  "dependencies": {
-    "database": "postgresql+asyncpg (configured)",
-    "threat_crawler": "active",
-    "graph_engine": "operational"
-  }
-}
-```
+| `/api/v1/actors` | `GET` | Filtered list of threat actors |
+| `/api/v1/actors/{id}` | `GET` | Target actor profile and identifiers |
+| `/api/v1/actors/{id}/graph` | `GET` | Graph relationship visualization data |
+| `/api/v1/export` | `GET` | NTRO deliverable export |
 
 ---
 

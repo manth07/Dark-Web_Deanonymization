@@ -1,0 +1,13 @@
+actor_id,handle,platform,identifier_type,identifier_value,attribution_confidence
+actor-92a41cc0,ShadowBroker,DreadClone,crypto_wallet_BTC,bc1q9x7h27eecqvl3nfkq988a03z2vxln6g0f9pt8s,0.95
+actor-92a41cc0,ShadowBroker,DreadClone,pgp_key,"-----BEGIN PGP PUBLIC KEY BLOCK-----
+mQENBF2v6wEBCADL+SAMPLE+THREAT+INTEL+KEY+BLOCK+DATA+FOR+STYLOMETRY+
+TESTING+PURPOSES+ONLY+4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B==
+-----END PGP PUBLIC KEY BLOCK-----",0.95
+actor-92a41cc0,ShadowBroker,DreadClone,pgp_key,4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B,0.95
+actor-92a41cc0,GhostMigrant,AlphaVendor,crypto_wallet_BTC,bc1q9x7h27eecqvl3nfkq988a03z2vxln6g0f9pt8s,0.95
+actor-92a41cc0,GhostMigrant,AlphaVendor,pgp_key,"-----BEGIN PGP PUBLIC KEY BLOCK-----
+mQENBF2v6wEBCADL+SAMPLE+THREAT+INTEL+KEY+BLOCK+DATA+FOR+STYLOMETRY+
+TESTING+PURPOSES+ONLY+4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B==
+-----END PGP PUBLIC KEY BLOCK-----",0.95
+actor-92a41cc0,GhostMigrant,AlphaVendor,pgp_key,4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B,0.95
