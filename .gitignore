@@ -1,0 +1,34 @@
+# Environment & Credentials
+.env
+*.env
+backend/.env
+**/.env
+
+# Python Virtual Environments & Caches
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Output Reports & Data
+output/
+backend/output/
+reports/
+*.pdf
+
+# Node & Frontend Dependencies / Builds
+node_modules/
+.next/
+dist/
+build/
+.cache/
+
+# IDE & System Files
+.DS_Store
+.vscode/
+.idea/
